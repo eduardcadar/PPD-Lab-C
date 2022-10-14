@@ -10,10 +10,8 @@ int main()
     Matrix matrix = FileUtils::ReadFileAsMatrix("C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB\\Lab1\\src\\matrix1.txt");
     Matrix windowMatrix = FileUtils::ReadFileAsMatrix("C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB\\Lab1\\src\\windowMatrix1.txt");
 
-    Matrix borderedMatrix = MatrixUtils::AddBorderToMatrix(matrix);
-
     Secvential secventialSolver = Secvential();
-    Matrix outputMatrix = secventialSolver.Solve(borderedMatrix, windowMatrix);
+    Matrix outputMatrix = secventialSolver.Solve(matrix, windowMatrix);
  
     MatrixUtils::PrintMatrix(outputMatrix);
 }
