@@ -21,6 +21,9 @@
     <ClCompile Include="Secvential.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix1.txt">
@@ -29,9 +32,36 @@
     <Text Include="..\..\PPD_LAB\Lab1\src\matrix1.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix4.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrixEx.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix4.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrixEx.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Secvential.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

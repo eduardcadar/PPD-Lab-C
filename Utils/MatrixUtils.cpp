@@ -33,3 +33,16 @@ void MatrixUtils::PrintMatrix(Matrix matrix) {
         cout << '\n';
     }
 }
+
+bool MatrixUtils::SameElements(Matrix matrix1, Matrix matrix2)
+{
+    if (matrix1.n != matrix2.n)
+        return false;
+    if (matrix1.m != matrix2.m)
+        return false;
+    for (int i = 0; i < matrix1.n; i++)
+        for (int j = 0; j < matrix1.m; j++)
+            if (matrix1.values[i][j] != matrix2.values[i][j])
+                return false;
+    return true;
+}

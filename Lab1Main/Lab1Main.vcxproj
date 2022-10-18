@@ -127,12 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="Lab1Main.cpp" />
     <ClCompile Include="Secvential.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\PPD_LAB\Lab1\src\matrix1.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix2.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix3.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrix4.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\matrixEx.txt" />
     <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix1.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix2.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix3.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix4.txt" />
+    <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrixEx.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utils\Utils.vcxproj">
@@ -140,6 +149,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common.h" />
     <ClInclude Include="Secvential.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
