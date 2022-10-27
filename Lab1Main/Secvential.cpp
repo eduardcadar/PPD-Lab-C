@@ -1,7 +1,7 @@
 #include "Secvential.h"
 #include "Common.h"
 
-Matrix Secvential::Solve(Matrix matrix, Matrix windowMatrix) {
+Matrix Secvential::Solve(Matrix& matrix, Matrix& windowMatrix) {
 	Matrix outputMatrix = Matrix();
 	outputMatrix.n = matrix.n;
 	outputMatrix.m = matrix.m;

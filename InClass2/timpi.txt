@@ -1,0 +1,8 @@
+1.         secvential         paralel
+V1 -       13.3325 ms         8.58 ms
+V2 -       13.6378 ms         9.81 ms 
+V3 -       14.5498 ms         9.47 ms
+2. Timp secv / Timp paralel
+V1 - 1.5539
+V2 - 1.38903
+V3 - 1.53613

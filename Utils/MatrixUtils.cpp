@@ -4,7 +4,7 @@
 #include <algorithm>
 using std::cout;
 
-Matrix MatrixUtils::AddBorderToMatrix(Matrix matrix) {
+Matrix MatrixUtils::AddBorderToMatrix(Matrix& matrix) {
 	Matrix borderedMatrix = Matrix();
     borderedMatrix.n = matrix.n + 2;
     borderedMatrix.m = matrix.m + 2;
@@ -25,7 +25,7 @@ Matrix MatrixUtils::AddBorderToMatrix(Matrix matrix) {
 	return borderedMatrix;
 }
 
-void MatrixUtils::PrintMatrix(Matrix matrix) {
+void MatrixUtils::PrintMatrix(Matrix& matrix) {
     cout << matrix.n << ' ' << matrix.m << '\n';
     for (int i = 0; i < matrix.n; i++) {
         for (int j = 0; j < matrix.m; j++)
@@ -34,7 +34,7 @@ void MatrixUtils::PrintMatrix(Matrix matrix) {
     }
 }
 
-bool MatrixUtils::SameElements(Matrix matrix1, Matrix matrix2)
+bool MatrixUtils::SameElements(Matrix& matrix1, Matrix& matrix2)
 {
     if (matrix1.n != matrix2.n)
         return false;

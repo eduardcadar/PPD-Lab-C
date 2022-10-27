@@ -1,6 +1,6 @@
 #include "Common.h"
 
-double Common::CalculateValue(int i, int j, Matrix matrix, Matrix windowMatrix) {
+double Common::CalculateValue(int i, int j, Matrix& matrix, Matrix& windowMatrix) {
 	double output = 0;
 	for (int k = -windowMatrix.n / 2; k <= windowMatrix.n / 2; k++) {
 		for (int l = -windowMatrix.m / 2; l <= windowMatrix.m / 2; l++) {

@@ -24,6 +24,9 @@
     <ClCompile Include="Common.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Parallel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\PPD_LAB\Lab1\src\windowMatrix1.txt">
@@ -62,6 +65,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parallel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

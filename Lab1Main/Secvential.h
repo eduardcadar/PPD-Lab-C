@@ -3,5 +3,5 @@
 
 class Secvential {
 public:
-	Matrix Solve(Matrix matrix, Matrix windowMatrix);
+	Matrix Solve(Matrix& matrix, Matrix& windowMatrix);
 };

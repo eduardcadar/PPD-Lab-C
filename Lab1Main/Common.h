@@ -3,6 +3,6 @@
 
 class Common {
 public:
-	static double CalculateValue(int i, int j, Matrix matrix, Matrix windowMatrix);
+	static double CalculateValue(int i, int j, Matrix& matrix, Matrix& windowMatrix);
 };
 
