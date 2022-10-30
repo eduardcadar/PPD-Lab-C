@@ -89,23 +89,24 @@ int main(int argc, char* argv[])
     string matrixPath = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB\\Lab1\\src\\matrix1.txt";
     string windowMatrixPath = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB\\Lab1\\src\\windowMatrix1.txt";
     int no_threads = 4;
-    no_threads = stoi(argv[1]);
-    
-    bool secv = false;
+    if (argc > 1)
+        no_threads = stoi(argv[1]);
 
-    //Matrix matrix = FileUtils::ReadFileAsMatrix(matrixPath);
-    //Matrix windowMatrix = FileUtils::ReadFileAsMatrix(windowMatrixPath);
+    bool secv = true;
 
-    ReadFileAsMatrixStatic(matrixPath);
-    ReadFileAsWindowMatrixStatic(windowMatrixPath);
+    Matrix matrix = FileUtils::ReadFileAsMatrix(matrixPath);
+    Matrix windowMatrix = FileUtils::ReadFileAsMatrix(windowMatrixPath);
 
-    //Secvential secventialSolver = Secvential();
-    Parallel parallelSolver = Parallel();
+    //ReadFileAsMatrixStatic(matrixPath);
+    //ReadFileAsWindowMatrixStatic(windowMatrixPath);
+
+    Secvential secventialSolver = Secvential();
+    //Parallel parallelSolver = Parallel();
 
     if (secv) {
         auto start = chrono::steady_clock::now();
-        //Matrix outputMatrixSeq = secventialSolver.Solve(matrix, windowMatrix);
-        SeqSolveStatic();
+        Matrix outputMatrixSeq = secventialSolver.Solve(matrix, windowMatrix);
+        //SeqSolveStatic();
         auto finish = chrono::steady_clock::now();
         auto tSeq = chrono::duration <double, milli>(finish - start).count();
         //cout << "Time for seq: " << tSeq << " ms\n";
