@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{358199b6-12ec-4660-9573-f6d8d351ebd9}</ProjectGuid>
-    <RootNamespace>Lab2</RootNamespace>
+    <ProjectGuid>{fed8c65e-4dd3-4451-a371-41d81dbe5f69}</ProjectGuid>
+    <RootNamespace>InClass3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,7 +76,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(MSMPI_INC);$(MSMPI_INC)\x64</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -94,7 +93,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(MSMPI_INC);$(MSMPI_INC)\x64</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -112,7 +110,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(MSMPI_INC);$(MSMPI_INC)\x64</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -130,7 +127,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(MSMPI_INC);$(MSMPI_INC)\x64</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -143,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lab2.cpp" />
+    <ClCompile Include="InClass3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
