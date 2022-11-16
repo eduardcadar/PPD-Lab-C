@@ -7,14 +7,11 @@
 using namespace std;
 
 string test = "1";
-string nr1Path = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\Numar1test" + test + ".txt";
-string nr2Path = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\Numar2test" + test + ".txt";
-string rezPath = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\RezTest" + test + ".txt";
 int varianta = 1;
 
-ifstream fin1(nr1Path);
-ifstream fin2(nr2Path);
-ifstream finrez(rezPath);
+ifstream fin1;
+ifstream fin2;
+ifstream finrez;
 
 char* varianta0(int n1, int n2)
 {
@@ -54,24 +51,26 @@ char* varianta1(int rank, int numProcs, int n1, int n2)
 		int a;
 		char* nr1 = new char[lengths[0]];
 		char* nr2 = new char[lengths[0]];
+		int start = 0;
 		for (int p = 1; p < numProcs; p++) {
 			for (int i = 0; i < lengths[p - 1]; i++) {
 				nr1[i] = nr2[i] = 0;
-				if (i < n1) {
+				if (i + start < n1) {
 					fin1 >> a;
 					nr1[i] = a;
 				}
-				if (i < n2) {
+				if (i + start < n2) {
 					fin2 >> a;
 					nr2[i] = a;
 				}
 			}
+			start += lengths[p - 1];
 			MPI_Send(nr1, lengths[p - 1], MPI_CHAR, p, 111, MPI_COMM_WORLD);
 			MPI_Send(nr2, lengths[p - 1], MPI_CHAR, p, 112, MPI_COMM_WORLD);
 		}
 		MPI_Status status;
 		char* rez = new char[n + 1];
-		int start = 0;
+		start = 0;
 		for (int p = 1; p < numProcs; p++) {
 			MPI_Recv(rez + start, lengths[p - 1], MPI_CHAR, p, 222, MPI_COMM_WORLD, &status);
 			start += lengths[p - 1];
@@ -186,19 +185,21 @@ char* varianta3(int rank, int numProcs, int n1, int n2)
 	if (rank == 0) {
 		char* nr1 = new char[lengths[0]];
 		char* nr2 = new char[lengths[0]];
+		int start = 0;
 		for (int p = 1; p < numProcs; p++) {
 			int a;
 			for (int i = 0; i < lengths[p - 1]; i++) {
 				nr1[i] = nr2[i] = 0;
-				if (i < n1) {
+				if (i + start < n1) {
 					fin1 >> a;
 					nr1[i] = a;
 				}
-				if (i < n2) {
+				if (i + start < n2) {
 					fin2 >> a;
 					nr2[i] = a;
 				}
 			}
+			start += lengths[p - 1];
 			MPI_Send(nr1, lengths[p - 1], MPI_CHAR, p, 111, MPI_COMM_WORLD);
 			MPI_Send(nr2, lengths[p - 1], MPI_CHAR, p, 112, MPI_COMM_WORLD);
 		}
@@ -206,7 +207,7 @@ char* varianta3(int rank, int numProcs, int n1, int n2)
 		MPI_Request* requests = new MPI_Request[numProcs - 1];
 		MPI_Request reqCarry;
 		char* rez = new char[n + 1];
-		int start = 0;
+		start = 0;
 		for (int p = 1; p < numProcs; p++) {
 			MPI_Irecv(rez + start, lengths[p - 1], MPI_CHAR, p, 222, MPI_COMM_WORLD, requests + p - 1);
 			start += lengths[p - 1];
@@ -274,26 +275,46 @@ void generateFile(string filePath, int n)
 
 int main(int argc, char* argv[])
 {
+	argv++, argc--;
+	if (argc == 2) {
+		test = argv[0];
+		varianta = stoi(argv[1]);
+		if (test != "1" && test != "2" && test != "3") {
+			cout << "Wrong test\n";
+			return 1;
+		}
+		if (varianta < 0 || varianta > 3) {
+			cout << "Nu exista varianta\n";
+			return 2;
+		}
+	}
+	string nr1Path = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\Numar1test" + test + ".txt";
+	string nr2Path = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\Numar2test" + test + ".txt";
+	string rezPath = "C:\\facultate\\Semestrul 5\\PPD\\PPD_LAB_C\\Lab3\\RezTest" + test + ".txt";
+	fin1.open(nr1Path, ifstream::in);
+	fin2.open(nr2Path, ifstream::in);
+	finrez.open(rezPath, ifstream::in);
 	int n1, n2;
 	fin1 >> n1;
 	fin2 >> n2;
+	int rank, numProcs;
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &numProcs);
 	if (varianta == 0) {
-		auto start = chrono::steady_clock::now();
-		char* rez = varianta0(n1, n2);
-		auto finish = chrono::steady_clock::now();
-		auto time = chrono::duration <double, milli>(finish - start).count();
-		if (!checkResult(rez, max(n1, n2) + 1))
-			cout << "WRONG RESULT";
-		else
-			cout << time;
-		delete[] rez;
-		return 0;
+		if (rank == 0) {
+			auto start = chrono::steady_clock::now();
+			char* rez = varianta0(n1, n2);
+			auto finish = chrono::steady_clock::now();
+			auto time = chrono::duration <double, milli>(finish - start).count();
+			if (!checkResult(rez, max(n1, n2) + 1))
+				cout << "WRONG RESULT";
+			else
+				cout << time;
+			delete[] rez;
+		}
 	}
 	else {
-		int rank, numProcs;
-		MPI_Init(&argc, &argv);
-		MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-		MPI_Comm_size(MPI_COMM_WORLD, &numProcs);
 		char* rez = new char[0];
 		auto start = chrono::steady_clock::now();
 		if (varianta == 1)
@@ -311,8 +332,8 @@ int main(int argc, char* argv[])
 				cout << time;
 		}
 		delete[] rez;
-		MPI_Finalize();
 	}
+	MPI_Finalize();
 	fin1.close();
 	fin2.close();
 	finrez.close();
